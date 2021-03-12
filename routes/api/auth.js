@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const sendMail = require('../../../services/mailing');
+const sendMail = require('../../services/mailing');
 const crypto = require('crypto');
 
-const User = require('../../../models/User');
+const User = require('../../models/User');
 
 router.post('/register', async (req,res) => {
     const { username, email, password } = req.body;

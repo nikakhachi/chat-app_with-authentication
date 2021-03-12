@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const SMTPPool = require('nodemailer/lib/smtp-pool');
 require('dotenv').config({ path: "./config.env"})
 const app = express();
 
@@ -11,8 +12,8 @@ mongoose.connect(
     () => console.log('MongoDB Connected')
 );
 
-app.use('/api/auth', require('./routes/api/auth/auth'))
-
+app.use('/api/auth', require('./routes/api/auth'))
+app.use('/api/private', require('./routes/api/private'));
 
 const PORT = process.env.PORT || 5000;
 
