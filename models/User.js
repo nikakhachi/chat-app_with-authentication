@@ -32,22 +32,17 @@ const UserSchema = mongoose.Schema({
 
 UserSchema.pre("save", async function(next){
     if(!this.isModified("password")){
-        console.log(`PRESAVE, password isn't modified`);
         return next()
     }
-    console.log(`PRESAVE, passsword is modified`);
     const salt = await brcypt.genSalt(10);
     this.password = await brcypt.hash(this.password, salt);
-    console.log('Password Hashed Successfully');
     next();
 })
 
 UserSchema.methods.generateToken = async function(){
-    console.log('generating token');
     return jwt.sign(
         { id: this._id },
-        process.env.JWT_SECRET,
-        { expiresIn: 3600 }
+        process.env.JWT_SECRET
     )
 }
 
