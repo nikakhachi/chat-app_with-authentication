@@ -1,0 +1,73 @@
+.form-div {
+  animation: fadeIn 0.4s;
+}
+.form-title {
+  font-size: 4vw;
+  margin: 3% 0 2% 0;
+}
+#login-title,
+#resetPass-title {
+  margin-top: 6%;
+}
+#forgotPass-title {
+  margin: 6% 0 4% 0;
+}
+.form {
+  text-align: left;
+  margin: auto;
+  width: 35%;
+}
+.form-element {
+  display: block;
+}
+.form-input {
+  width: 100%;
+  margin-bottom: 2.5%;
+  font-family: "Poppins", sans-serif;
+  border-radius: 1vw;
+  font-size: 1.2vw;
+  padding-left: 2%;
+  height: 2.2vw;
+  background-color: white;
+  border: none;
+}
+.form-input:focus {
+  outline: none;
+}
+.form-label {
+  font-size: 2vw;
+  margin-bottom: 1%;
+}
+.form-label span {
+  font-size: 1.2vw;
+}
+.form-submit-btn {
+  background-color: green;
+  color: white;
+  border: none;
+  font-size: 2vw;
+  padding: 1.5% 15%;
+  border-radius: 50vw;
+  margin: 4% 0 4% 5%;
+  float: right;
+  cursor: pointer;
+}
+.form-route-txt {
+  font-size: 1.4vw;
+  float: right;
+}
+.form-error,
+.form-msg {
+  color: rgba(255, 0, 0, 0.747);
+  font-size: 1.1vw;
+  margin-top: 5%;
+}
+.form-msg {
+  color: green;
+}
+.form-route {
+  color: rgb(95, 95, 224);
+}
+#forgot-pass-route {
+  margin-top: 2%;
+}
