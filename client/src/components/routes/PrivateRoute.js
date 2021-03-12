@@ -34,7 +34,7 @@ function PrivateRoute({component: Component, ...rest}){
     return <Route exact path='/' render={() => 
     loading
     ? <div className='loader'></div>
-    : validToken ? <div className='loader'></div>
+    : validToken ? <Component data={data} {...rest}/>
     : <Redirect to='/login' />} />
 }
 
