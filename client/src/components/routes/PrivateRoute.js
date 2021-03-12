@@ -1,6 +1,7 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './loader.css';
 
 function PrivateRoute({component: Component, ...rest}){
 
@@ -32,8 +33,8 @@ function PrivateRoute({component: Component, ...rest}){
 
     return <Route exact path='/' render={() => 
     loading
-    ? <h1>LOADING</h1>
-    : validToken ? <Component data={data} {...rest}/>
+    ? <div className='loader'></div>
+    : validToken ? <div className='loader'></div>
     : <Redirect to='/login' />} />
 }
 

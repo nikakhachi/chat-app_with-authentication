@@ -1,0 +1,32 @@
+.loader:after {
+  content: " ";
+  display: block;
+  width: 5vw;
+  height: 5vw;
+  margin: 15% auto;
+  border-radius: 50%;
+  border: 0.6vw solid rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255) transparent #ffffff transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+@media (max-width: 1025px) {
+  .loader:after {
+    margin-top: 30%;
+    width: 12vw;
+    height: 12vw;
+    border: 1.4vw solid rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255) transparent #ffffff transparent;
+    animation: loader 1.4s linear infinite;
+  }
+}
+@media (max-width: 500px) {
+  .loader:after {
+    margin-top: 40%;
+    width: 20vw;
+    height: 20vw;
+    border: 2vw solid rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255) transparent #ffffff transparent;
+    animation: loader 1.5s linear infinite;
+  }
+}
