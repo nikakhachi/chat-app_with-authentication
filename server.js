@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const SMTPPool = require('nodemailer/lib/smtp-pool');
+const path = require('path');
 require('dotenv').config({ path: "./config.env"})
 const app = express();
 
