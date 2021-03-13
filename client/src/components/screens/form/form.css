@@ -52,6 +52,9 @@
   float: right;
   cursor: pointer;
 }
+#resetPass-form .form-submit-btn {
+  padding: 1.5% 8%;
+}
 .form-route-txt {
   font-size: 1.4vw;
   float: right;
