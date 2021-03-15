@@ -5,9 +5,9 @@ const crypto = require('crypto');
 
 const User = require('../../models/User');
 
-function addCookie(token){
+function addCookie(res, token){
     res.cookie('jwt', token, {
-        expires: new Date(Date.now() + 1000000),
+        expires: new Date(Date.now() + 30*(1000*60)),
         secure: true,
         httpOnly: true
     })
@@ -22,7 +22,7 @@ router.post('/register', async (req,res) => {
         const user = new User({username, email, password})
         const savedUser = await user.save();
         const token = await savedUser.generateToken();
-        addCookie(token);
+        addCookie(res, token);
         res.status(201).json({
             msg: 'User saved successfully',
             token,
@@ -46,7 +46,7 @@ router.post('/login', async (req,res) => {
         const isMatch = await foundUser.comparePasswords(password);
         if(!isMatch) return res.status(400).json({error: 'Invalid Credentials'});
         const token = await foundUser.generateToken();
-        addCookie(token);
+        addCookie(res, token);
         res.status(200).json({
             msg: 'Logged in Successfully',
             token,
