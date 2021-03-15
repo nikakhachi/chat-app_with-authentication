@@ -13,6 +13,12 @@ function ResetPass({history}){
 
     async function submitForm(e){
         e.preventDefault();
+        if(password !== confirmPassword){
+            setTimeout(() => setError(''), 2500);
+            setPassword('');
+            setConfirmPassword('');
+            return setError('Passwords do not match');
+        }
         try {
             await axios.put(`/api/auth/resetPassword/${token}`, {password});
             setMsg('Password changed successfully. Redirecting to Log in Page..')
