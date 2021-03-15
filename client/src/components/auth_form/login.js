@@ -13,9 +13,8 @@ function Login({history}){
         e.preventDefault();
         const newUser = { email, password };
         try {
-            const {data} = await axios.post(`/api/auth/login`, newUser)
+            await axios.post(`/api/auth/login`, newUser)
             setMsg('Logged in successfully. Redirecting to private page...');
-            localStorage.setItem("authToken", data.token)
             setTimeout(() => history.push('/'), 1000);
         } catch (error) {
             if(/^User/.test(error.response.data.error)){

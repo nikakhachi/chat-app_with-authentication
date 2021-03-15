@@ -3,8 +3,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config({ path: "./config.env"})
 const app = express();
+const cookieParser = require('cookie-parser')
+ 
 
 app.use(express.json());
+app.use(cookieParser())
+
 
 mongoose.connect(
     process.env.MONGO_URI, 

@@ -11,15 +11,8 @@ function PrivateRoute({component: Component, ...rest}){
 
     useEffect(() => {
         async function authorize(){
-            let token = localStorage.getItem("authToken");
-            if(!token) return setLoading(false);
             try {
-                const {data} = await axios.get('/api/private', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                let { data } = await axios.get('/api/private')
                 setValidToken(true);
                 setData(data.users);
                 setLoading(false);

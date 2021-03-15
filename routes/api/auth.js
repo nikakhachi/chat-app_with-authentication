@@ -14,6 +14,11 @@ router.post('/register', async (req,res) => {
         const user = new User({username, email, password})
         const savedUser = await user.save();
         const token = await savedUser.generateToken();
+        res.cookie('jwt', token, {
+            expires: new Date(Date.now() + 1000000),
+            secure: process.env.NODE_ENV === 'production' ? true : false,
+            httpOnly: process.env.NODE_ENV === 'production' ? true : false
+        })
         res.status(201).json({
             msg: 'User saved successfully',
             token,
@@ -37,6 +42,11 @@ router.post('/login', async (req,res) => {
         const isMatch = await foundUser.comparePasswords(password);
         if(!isMatch) return res.status(400).json({error: 'Invalid Credentials'});
         const token = await foundUser.generateToken();
+        res.cookie('jwt', token, {
+            expires: new Date(Date.now() + 1000000),
+            secure: true,
+            httpOnly: true
+        })
         res.status(200).json({
             msg: 'Logged in Successfully',
             token,
@@ -90,5 +100,14 @@ router.put('/resetPassword/:resetToken', async (req,res) => {
         res.status(400).json({error: error.message})
     }
 });
+
+router.post('/logout', (req, res) => {
+    res.cookie('jwt', 'expiredtoken', {
+        expires: new Date(Date.now() + 10000),
+        secure: true,
+        httpOnly: true
+    });
+    res.status(200).json({msg: "Logged out successfuly"})
+})
 
 module.exports = router;

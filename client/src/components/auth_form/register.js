@@ -21,9 +21,8 @@ function Register({history}){
         }
         const newUser = {username, email, password};
         try {
-            const {data} = await axios.post(`/api/auth/register`, newUser)
+            await axios.post(`/api/auth/register`, newUser)
             setMsg('User created. Redirecting to private page...');
-            localStorage.setItem("authToken", data.token)
             setTimeout(() => history.push('/'), 1000);
         } catch (error) {
             setEmail('');

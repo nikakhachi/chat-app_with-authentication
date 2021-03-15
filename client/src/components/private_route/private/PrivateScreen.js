@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'; 
+import axios from 'axios';
 import './privateScreen.css'
 
 function PrivateScreen(props){
 
-    function logOut(){
-        localStorage.removeItem("authToken");
+    async function logOut(){
+        try {
+            await axios.post('/api/auth/logout');
+            localStorage.removeItem("authToken");
+        } catch (error) {
+            
+        }
     }
 
     return (
