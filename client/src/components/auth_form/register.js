@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-function Register({history}){
+function Register(){
+
+    const history = useHistory();
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -16,7 +18,7 @@ function Register({history}){
         if(password !== confirmPassword){
             setPassword('');
             setConfirmPassword('');
-            setTimeout(() => setError(''), 3000);
+            setTimeout(() => setError(''), 2500);
             return setError('Password do not match');
         }
         const newUser = {username, email, password};

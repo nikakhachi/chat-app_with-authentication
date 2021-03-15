@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
-function ResetPass({history}){
+function ResetPass(){
+
+    const history = useHistory();
 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -22,7 +24,7 @@ function ResetPass({history}){
         try {
             await axios.put(`/api/auth/resetPassword/${token}`, {password});
             setMsg('Password changed successfully. Redirecting to Log in Page..')
-            setTimeout(() => history.push('/login'), 2000);
+            setTimeout(() => history.push('/login'), 1000);
         } catch (error) {
             setError(error.response.data.error);
         }
