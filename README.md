@@ -4,7 +4,7 @@ An authentication application built with MERN stack (MongoDB, Express, ReactJS, 
 
 Login/Register application. Has feature of reseting and changing passwords, by getting an email containing reset link from a bot
 
-Has a private route which is accesible only with valid web token in localStorage, which is stored after login/registering.
+Has a private route which is accesible only with valid web token in cookies, which is stored after login/registering.
 
 ### Back-end
 Express for routing
@@ -14,6 +14,8 @@ Data is stored in MongoDB
 BcryptJS for hashing passwords
 
 JsonWebToken for generating tokens
+
+cookie-parser for using cookies
 
 NodeMailer for sending password reset links
 
