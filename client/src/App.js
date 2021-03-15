@@ -1,12 +1,12 @@
 import './App.css';
-import './components/screens/form/form.css';
+import './components/auth_form/form.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import PrivateRoute from './components/routes/PrivateRoute'; 
-import PrivateScreen from './components/screens/private/PrivateScreen';
-import Register from './components/screens/form/register';
-import Login from './components/screens/form/login';
-import ForgotPass from './components/screens/form/forgotPass';
-import ResetPass from './components/screens/form/resetPass';
+import PrivateRoute from './components/private_route/PrivateRoute'; 
+import PrivateScreen from './components/private_route/private/PrivateScreen';
+import Register from './components/auth_form/register';
+import Login from './components/auth_form/login';
+import ForgotPass from './components/auth_form/forgotPass';
+import ResetPass from './components/auth_form/resetPass';
 
 function App() {
   return (
