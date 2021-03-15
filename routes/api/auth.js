@@ -5,6 +5,14 @@ const crypto = require('crypto');
 
 const User = require('../../models/User');
 
+function addCookie(token){
+    res.cookie('jwt', token, {
+        expires: new Date(Date.now() + 1000000),
+        secure: true,
+        httpOnly: true
+    })
+}
+
 router.post('/register', async (req,res) => {
     const { username, email, password } = req.body;
     if(!username || !email || !password) return res.status(400).json({error: 'Please fill all fields'})
@@ -14,11 +22,7 @@ router.post('/register', async (req,res) => {
         const user = new User({username, email, password})
         const savedUser = await user.save();
         const token = await savedUser.generateToken();
-        res.cookie('jwt', token, {
-            expires: new Date(Date.now() + 1000000),
-            secure: process.env.NODE_ENV === 'production' ? true : false,
-            httpOnly: process.env.NODE_ENV === 'production' ? true : false
-        })
+        addCookie(token);
         res.status(201).json({
             msg: 'User saved successfully',
             token,
@@ -42,11 +46,7 @@ router.post('/login', async (req,res) => {
         const isMatch = await foundUser.comparePasswords(password);
         if(!isMatch) return res.status(400).json({error: 'Invalid Credentials'});
         const token = await foundUser.generateToken();
-        res.cookie('jwt', token, {
-            expires: new Date(Date.now() + 1000000),
-            secure: true,
-            httpOnly: true
-        })
+        addCookie(token);
         res.status(200).json({
             msg: 'Logged in Successfully',
             token,
