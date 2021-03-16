@@ -19,7 +19,10 @@ router.post('/register', async (req,res) => {
     try {
         const foundUser = await User.findOne({email});
         if(foundUser) return res.status(400).json({error: 'The email is already in use'})
-        const user = new User({username, email, password})
+        const foundUserbyName = await User.findOne({username});
+        if(foundUserbyName) return res.status(400).json({error: 'Username is taken'})
+        const modifiedUsername = username.trim().toLowerCase();
+        const user = new User({username: modifiedUsername, email, password})
         const savedUser = await user.save();
         const token = await savedUser.generateToken();
         addCookie(res, token);

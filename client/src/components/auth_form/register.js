@@ -28,7 +28,7 @@ function Register(){
             setTimeout(() => history.push('/'), 1000);
         } catch (error) {
             setEmail('');
-            setTimeout(() => setEmail(''), 2500);
+            setTimeout(() => setError(''), 2500);
             setError(error.response.data.error);
         }
     }
