@@ -2,32 +2,34 @@ import { Route, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './loader.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { authenticate, authenticateFailure } from '../../redux/actions';
 
 function PrivateRoute({component: Component, ...rest}){
 
     const [loading, setLoading] = useState(true);
-    const [validToken, setValidToken] = useState(false);
-    const [data, setData] = useState([]);
+    const authenticated = useSelector(state => state.authenticated);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function authorize(){
             try {
                 let { data } = await axios.get('/api/private')
-                setValidToken(true);
-                setData(data.users);
+                dispatch(authenticate(data))
                 setLoading(false);
             } catch (error) {
-                setValidToken(false);
+                dispatch(authenticateFailure());
                 setLoading(false);
             }
         }
         authorize();
-    }, []);
+    }, [dispatch]);
 
     return <Route exact path='/' render={() => 
     loading
     ? <div className='loader'></div>
-    : validToken ? <Component data={data} {...rest}/>
+    : authenticated ? <Component {...rest}/>
     : <Redirect to='/login' />} />
 }
 
