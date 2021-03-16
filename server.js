@@ -1,14 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const http = require('http');
 require('dotenv').config({ path: "./config.env"})
 const app = express();
 const cookieParser = require('cookie-parser')
- 
+const socketio = require('socket.io');
+const socket = require('./socket/socket');
 
 app.use(express.json());
 app.use(cookieParser())
+const server = http.createServer(app)
+const io = socketio(server);
 
+socket(io);
 
 mongoose.connect(
     process.env.MONGO_URI, 
@@ -30,4 +35,4 @@ if(process.env.NODE_ENV === 'production'){
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on PORT : ${PORT}`))
+server.listen(PORT, () => console.log(`Server started on PORT : ${PORT}`))
