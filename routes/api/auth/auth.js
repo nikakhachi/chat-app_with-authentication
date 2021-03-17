@@ -73,7 +73,7 @@ router.post('/forgotPassword', async (req,res) => {
         if(!foundUser) return res.status(404).json({error: 'Invalid Email'});
         const resetToken = await foundUser.generateResetToken();
         await foundUser.save();
-        const resetURL = `https://authentication-bynick.herokuapp.com/resetPassword/${resetToken}`
+        const resetURL = `https://chatapp-authentication-bynick.herokuapp.com/resetPassword/${resetToken}`
         const message = `
         <p>You have requested password reset<p>
         <p>Go to the following link to reset you password</p>
