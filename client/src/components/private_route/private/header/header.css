@@ -1,7 +1,41 @@
 #private-header {
-    height: 3.75vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.199);
+  height: 3.75vw;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.199);
+}
+
+#log-out-link {
+  margin: 0 2% 0% 2%;
+  width: 10%;
+}
+#log-out-btn {
+  font-size: 1.5vw;
+  padding: 2% 18%;
+  background-color: rgba(128, 128, 128, 0.192);
+  border: none;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.123);
+  cursor: pointer;
+}
+
+#private-header .fa-cog {
+  font-size: 1.8vw;
+  background-color: rgba(128, 128, 128, 0.192);
+  border: 1px solid rgba(255, 255, 255, 0.123);
+  padding: 0.1% 0.4%;
+  cursor: pointer;
+}
+#account-settings {
+  font-size: 1.5vw;
+  margin: 0 0.3% 0 0;
+}
+#header-username {
+  font-size: 2vw;
+  margin-right: 20%;
+}
+#private-header-title {
+  font-size: 2vw;
+  margin-right: 15%;
 }
