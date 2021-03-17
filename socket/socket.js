@@ -12,6 +12,12 @@ module.exports = (io) => io.on('connection', (socket) => {
         socket.to(room).emit('message', { user: 'BOT', text: `${user.username} has joined the chat 😜`});
         socket.join(room);
     })
+    socket.on('sendTyping', ({user, room}, callback) => {
+        io.to(room).emit('typing', user);
+    });
+    socket.on('sendStopTyping', ({user, room}, callback) => {
+        io.to(room).emit('stopTyping', user);
+    });
     socket.on('sendMessage', ({message, room}, callback) => {
         io.to(room).emit('message', { user: message.user, text: message.text});
     });

@@ -1,13 +1,13 @@
 import './header.css';
 import { Link } from 'react-router-dom';
 import { authenticateFailure } from '../../../../redux/auth/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 
 function Header(){
 
-    const user = useSelector(state => state.auth_data.user);
+    // const user = useSelector(state => state.auth_data.user);
 
     const dispatch = useDispatch();
 

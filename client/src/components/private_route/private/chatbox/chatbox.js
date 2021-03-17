@@ -5,7 +5,7 @@ import './chatbox.css'
 import ReactEmoji from 'react-emoji';
 import axios from 'axios';
 import ReactScrollableFeed from 'react-scrollable-feed';
-import { setMessages, setOnlineUsers } from '../../../../redux/online/actions';
+import { setMessages, setOnlineUsers, setTyping, removeTyping } from '../../../../redux/online/actions';
 
 let socket;
 
@@ -54,10 +54,32 @@ function Chatbox(){
             socket.off('message')};
     }, [messages, dispatch]);
 
+
+    // Add typing status when typing
+    useEffect(() => {
+        if(message !== ''){
+            socket.emit('sendTyping', {room: 'general', user: user.username});
+        }
+        socket.on('typing', user => {
+            dispatch(setTyping(user));
+        })
+        if(message === ''){
+            socket.emit('sendStopTyping', {room: 'general', user: user.username});
+        }
+        socket.on('stopTyping', user => {
+            dispatch(removeTyping(user));
+        })
+        return () => {
+            socket.off('typing');
+            socket.off('stopTyping');
+        };
+    }, [message, dispatch, user]);
+
+
     // Send Message or Clear Chat
     const sendMessage = e => {
         e.preventDefault();
-        if(message === '/clear' && user.email === 'o.sicknick@gmail.com'){
+        if(message === '/clear' && user.username === 'nika'){
             axios.delete('/api/private/chat/all');
             setMessage('');
             return dispatch(setMessages([]));
