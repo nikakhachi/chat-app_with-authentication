@@ -34,3 +34,7 @@
 .user-list-item .fa-circle-online-you {
   color: green;
 }
+
+.user-list-item #you {
+  font-size: 1.1vw;
+}
