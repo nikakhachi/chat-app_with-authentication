@@ -15,6 +15,7 @@ function Header(){
 
     return (
         <header id='private-header'>
+            under construction
             <Link id='log-out-link' to='/login'><button id='log-out-btn' onClick={logOut}>Log Out</button></Link>
         </header>
     )
