@@ -37,7 +37,7 @@ function Chatbox(){
             dispatch(setMessages(data));
         })
         return () => socket.off('loadChat');
-    }, [onlineUsers, messages]);
+    }, [onlineUsers, messages, dispatch]);
 
     // Update Chat for Every Text
     useEffect(() => {
@@ -52,7 +52,7 @@ function Chatbox(){
         return () => {
             socket.off('roomData');
             socket.off('message')};
-    }, [messages]);
+    }, [messages, dispatch]);
 
     // Send Message or Clear Chat
     const sendMessage = e => {
