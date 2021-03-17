@@ -14,8 +14,6 @@ function Chatbox(){
     const user = useSelector(state => state.auth_data.user);
 
     const [message, setMessage] = useState('');
-    // const [messages, setMessages] = useState([]);
-    // const [onlineUsers, setOnlineUsers] = useState([]);
 
     const messages = useSelector(state => state.online.messages);
     const onlineUsers = useSelector(state => state.online.online_users)
@@ -37,7 +35,6 @@ function Chatbox(){
     useEffect(() => {
         socket.on('loadChat', data => {
             dispatch(setMessages(data));
-            // setMessages(data.chat);
         })
         return () => socket.off('loadChat');
     }, [onlineUsers, messages]);
@@ -45,13 +42,11 @@ function Chatbox(){
     // Update Chat for Every Text
     useEffect(() => {
         socket.on('message', (message) => {
-            console.log('socket on message');
             const date = new Date(Date.now()).toString().split(' ');
             let timestamp = `${date[2]} ${date[1]}, ${date[4].slice(0,5)}`;
             dispatch(setMessages([...messages, {...message, time: timestamp}]));
         })
         socket.on("roomData", users => {
-            console.log('getting room data');
             dispatch(setOnlineUsers(users));
           });
         return () => {

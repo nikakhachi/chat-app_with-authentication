@@ -5,7 +5,6 @@ let onlineUsers = [];
 module.exports = (io) => io.on('connection', (socket) => {
     socket.on('join', async (user, callback) => {
         onlineUsers.push(user);
-        console.log('online users', onlineUsers.length);
         const chat = await Chat.find({}).sort('-date').select('-_id').select('-__v');
         socket.emit('loadChat', chat);
         io.emit('roomData', onlineUsers )
@@ -20,7 +19,6 @@ module.exports = (io) => io.on('connection', (socket) => {
         const user = socket.handshake.query.user;
         const usersLeft = onlineUsers.filter(item => item.username !== user);
         onlineUsers = usersLeft;
-        console.log('online users', onlineUsers.length);
         io.emit('roomData', onlineUsers);
         socket.to('general').emit('message', { user: 'BOT', text: `${user} has left 😵`});
     }); 
