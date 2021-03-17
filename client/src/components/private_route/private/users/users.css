@@ -1,15 +1,15 @@
-#people-section {
+#user-section {
   width: 30%;
   background-color: rgba(66, 66, 66, 0.295);
 }
 
-#people-list {
+#user-list {
   list-style: none;
   padding: 2% 5%;
   text-align: left;
 }
 
-.people-list-item {
+.user-list-item {
   font-size: 1.5vw;
   margin-bottom: 0.2%;
   padding: 1% 0;
@@ -17,20 +17,20 @@
   word-break: break-all;
 }
 
-.people-list-item:first-child {
+.user-list-item:first-child {
   border-top: 1px solid rgba(128, 128, 128, 0.3);
 }
 
-.people-list-item .fa {
+.user-list-item .fa {
   font-size: 0.7vw;
   margin-right: 1%;
   color: gray;
 }
 
-.people-list-item .fa-circle-online {
+.user-list-item .fa-circle-online {
   color: green;
 }
 
-.people-list-item .fa-circle-online-you {
+.user-list-item .fa-circle-online-you {
   color: green;
 }

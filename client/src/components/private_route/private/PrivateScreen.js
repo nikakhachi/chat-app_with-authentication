@@ -1,6 +1,6 @@
 import './privateScreen.css'
 import Chatbox from './chatbox/chatbox';
-import Profile from './profile/profile';
+import Profile from './users/users';
 import Header from './header/header';
 
 function PrivateScreen(){
