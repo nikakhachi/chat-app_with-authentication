@@ -8,8 +8,6 @@ export function setMessages(data){
 }
 
 export function setOnlineUsers(data){
-    console.log('adding user');
-    console.log(data);
     return {
         type: ONLINE_USERS,
         payload: data
