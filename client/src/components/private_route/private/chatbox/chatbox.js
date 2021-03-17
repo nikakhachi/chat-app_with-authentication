@@ -1,65 +1,95 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './chatbox.css'
 import ReactEmoji from 'react-emoji';
+import axios from 'axios';
+import ReactScrollableFeed from 'react-scrollable-feed';
+import { setMessages, setOnlineUsers } from '../../../../redux/online/actions';
 
 let socket;
 
 function Chatbox(){
 
-    const data = useSelector(state => state.data);
+    const user = useSelector(state => state.auth_data.user);
 
-    const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
+    // const [messages, setMessages] = useState([]);
+    // const [onlineUsers, setOnlineUsers] = useState([]);
 
-    const ENDPOINT = `/`;
+    const messages = useSelector(state => state.online.messages);
+    const onlineUsers = useSelector(state => state.online.online_users)
 
+    const dispatch = useDispatch();
+
+    // Connection to Socket.io
     useEffect(() => {
-        const connectionOptions =  {
-            "force new connection" : true,
-            "reconnectionAttempts": "Infinity", 
-            "timeout" : 10000,                  
-            "transports" : ["websocket"]
-        };
-        socket = io(ENDPOINT, connectionOptions);
-        socket.emit('join', data.user, () => {
+        socket = io.connect('/', {query:`user=${user.username}`});
+        socket.emit('join', user, () => {
         });
         return () => {
-            socket.emit('disconnect-from-server', data.user)
+            socket.disconnect();
             socket.off();
         }
-    }, [ENDPOINT, data]);
+    }, [user]);
 
+    // Get Chat Data from DataBase and Online Users
     useEffect(() => {
-        
-        socket.on('message', (message) => {
-            const date = new Date(Date.now()).toString().split(' ');
-            let timestamp = `${date[2]},${date[1]} ${date[4].slice(0,5)}`;
-            setMessages([...messages, {...message, time: timestamp}]);
+        socket.on('loadChat', data => {
+            dispatch(setMessages(data));
+            // setMessages(data.chat);
         })
+        return () => socket.off('loadChat');
+    }, [onlineUsers, messages]);
+
+    // Update Chat for Every Text
+    useEffect(() => {
+        socket.on('message', (message) => {
+            console.log('socket on message');
+            const date = new Date(Date.now()).toString().split(' ');
+            let timestamp = `${date[2]} ${date[1]}, ${date[4].slice(0,5)}`;
+            dispatch(setMessages([...messages, {...message, time: timestamp}]));
+        })
+        socket.on("roomData", users => {
+            console.log('getting room data');
+            dispatch(setOnlineUsers(users));
+          });
+        return () => {
+            socket.off('roomData');
+            socket.off('message')};
     }, [messages]);
 
+    // Send Message or Clear Chat
     const sendMessage = e => {
         e.preventDefault();
-        if(message){
-            socket.emit('sendMessage', {text: message, user: data.user.username}, () => setMessage(''))
+        if(message === '/clear' && user.email === 'o.sicknick@gmail.com'){
+            axios.delete('/api/private/chat/all');
             setMessage('');
+            return dispatch(setMessages([]));
         }
+        if(message){
+            socket.emit('sendMessage', {text: message, user: user.username}, () => setMessage(''));
+            const date = new Date(Date.now()).toString().split(' ');
+            let timestamp = `${date[2]} ${date[1]}, ${date[4].slice(0,5)}`;
+            axios.post('/api/private/chat', {text: message, user: user.username, time: timestamp})
+        }
+        setMessage('');
     }
 
     return(
         <div id='chatbox-container'>
             <div id='chatbox-chat-container'>
+            <ReactScrollableFeed>
                 {messages.map((item, index) => {
-                    if(item.user === data.user.username){
-                        return <p className='chatbox-chat-line chatbox-chat-line-right' key={index}><span className='text-time'>{item.time}</span> <span className='text-author'><strong>{item.user}</strong></span> : {ReactEmoji.emojify(item.text)}</p>
+                    if(item.user === user.username){
+                        return <p className='chatbox-chat-line chatbox-chat-line-right' key={index}><span className='text-time'>{item.time}</span> <span className='text-author'><strong>you</strong></span> : {ReactEmoji.emojify(item.text)}</p>
                     }
                     if(item.user === 'BOT'){
                         return  <p className='chatbox-chat-line chatbox-chat-line-bot' key={index}><span className='text-time'>{item.time}</span> <span className='text-author'><strong>{item.user}</strong></span> : {ReactEmoji.emojify(item.text)}</p>
                     }
                     return <p className='chatbox-chat-line chatbox-chat-line-left' key={index}><span className='text-time'>{item.time}</span> <span className='text-author'><strong>{item.user}</strong></span> : {ReactEmoji.emojify(item.text)}</p>
                 })}
+            </ReactScrollableFeed>
             </div>
             <div id='chatbox-input-container'>
                 <input value={message} onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null} onChange={(e) => setMessage(e.target.value)} type='text' placeholder='Send Message' />

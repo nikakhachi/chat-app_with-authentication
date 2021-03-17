@@ -1,7 +1,7 @@
 #chatbox-container {
     background-color: rgba(255, 255, 255, 0.02);
-    width: 50%;
-    margin: auto;
+    float: right;
+    width: 70%;
     border-radius: 1vw;
     padding: 0.2%;
     scroll-snap-type: mandatory;
@@ -11,7 +11,7 @@
     border-top-right-radius: 1vw;
     background-color: rgb(255, 255, 255, 0.02);
     padding: 2% 2% 2% 1%;
-    height: 50vh;
+    height: 75vh;
     font-size: 1.2vw;
     text-align: left;
     overflow-y: scroll;
@@ -20,6 +20,7 @@
 .chatbox-chat-line {
     margin-bottom: 1%;
     padding: 0 0.5%;
+    word-break: break-all;
 }
 
 .chatbox-chat-line .text-author {
@@ -32,15 +33,17 @@
 }
 
 .chatbox-chat-line-right {
-    background-color: rgba(0, 128, 0, 0.2);
+    background-color: rgba(0, 128, 0, 0.1);
+    /* text-align: right;
+    direction: rtl; */
 }
 
 .chatbox-chat-line-bot {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .chatbox-chat-line-left {
-    background-color: rgba(0, 81, 255, 0.2);
+    background-color: rgba(0, 81, 255, 0.1);
 }
 
 #chatbox-input-container {

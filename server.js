@@ -21,8 +21,8 @@ mongoose.connect(
     () => console.log('MongoDB Connected')
 );
 
-app.use('/api/auth', require('./routes/api/auth'))
-app.use('/api/private', require('./routes/api/private'));
+app.use('/api/auth', require('./routes/api/auth/auth'))
+app.use('/api/private' , require('./middleware/protect') ,require('./routes/api/private/private'));
 
 
 if(process.env.NODE_ENV === 'production'){

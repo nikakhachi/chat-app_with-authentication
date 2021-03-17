@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const sendMail = require('../../services/mailing');
+const sendMail = require('../../../services/mailing');
 const crypto = require('crypto');
 
-const User = require('../../models/User');
+const User = require('../../../models/User');
 
 function addCookie(res, token){
     res.cookie('jwt', token, {
@@ -60,6 +60,7 @@ router.post('/login', async (req,res) => {
             }
         })
     } catch (error) {
+        console.log(error.message);
         res.status(400).json({error: error.message})
     }
 });

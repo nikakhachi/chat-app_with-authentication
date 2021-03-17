@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const User = require('../../models/User');
+const User = require('../../../models/User');
 
-router.get('/', require('../../middleware/protect'), async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const userData = await User.find({}).select('-email').select('-_id').select('-__v')
         res.json({users: userData, user: req.user})
@@ -12,5 +11,7 @@ router.get('/', require('../../middleware/protect'), async (req, res) => {
         res.status(500).json({error: error.message})
     }
 })
+
+router.use('/chat', require('./chat'));
 
 module.exports = router;

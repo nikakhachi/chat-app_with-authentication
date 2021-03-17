@@ -1,19 +1,8 @@
 #private-screen {
   animation: fadeIn 0.3s;
 }
-#private-title {
-  font-size: 4vw;
-  margin-top: 1%;
-  margin-bottom: 2%;
-}
-
-#log-out-btn {
-  margin-top: 3%;
-  font-size: 2vw;
-  padding: 0.3% 2%;
-  cursor: pointer;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.1);
-  border:none;
-  border-radius: 0.5vw;
+#private-main {
+  display: flex;
+  height: 100%;
+  position: relative;
 }

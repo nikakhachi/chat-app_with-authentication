@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './loader.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { authenticate, authenticateFailure } from '../../redux/actions';
+import { authenticate, authenticateFailure } from '../../redux/auth/actions';
 
 function PrivateRoute({component: Component, ...rest}){
 
     const [loading, setLoading] = useState(true);
-    const authenticated = useSelector(state => state.authenticated);
+    const authenticated = useSelector(state => state.auth_data.authenticated);
 
     const dispatch = useDispatch();
 

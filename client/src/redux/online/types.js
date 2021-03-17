@@ -1,0 +1,2 @@
+export const SET_MESSAGES = 'SET_MESSAGES';
+export const ONLINE_USERS = 'ONLINE_USERS'
