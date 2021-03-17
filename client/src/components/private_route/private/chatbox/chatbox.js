@@ -22,8 +22,8 @@ function Chatbox(){
 
     // Connection to Socket.io
     useEffect(() => {
-        socket = io.connect('/', {query:`user=${user.username}`});
-        socket.emit('join', user, () => {
+        socket = io.connect('/', {query:`user=${user.username}&room=general`});
+        socket.emit('join', { user, room: 'general'}, () => {
         });
         return () => {
             socket.disconnect();
@@ -63,7 +63,7 @@ function Chatbox(){
             return dispatch(setMessages([]));
         }
         if(message){
-            socket.emit('sendMessage', {text: message, user: user.username}, () => setMessage(''));
+            socket.emit('sendMessage', {message:{text: message, user: user.username}, room: 'general'}, () => setMessage(''));
             const date = new Date(Date.now()).toString().split(' ');
             let timestamp = `${date[2]} ${date[1]}, ${date[4].slice(0,5)}`;
             axios.post('/api/private/chat', {text: message, user: user.username, time: timestamp})
