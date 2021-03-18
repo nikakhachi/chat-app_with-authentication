@@ -13,5 +13,6 @@ router.get('/', async (req, res) => {
 })
 
 router.use('/chat', require('./chat'));
+router.use('/user', require('./user'));
 
 module.exports = router;

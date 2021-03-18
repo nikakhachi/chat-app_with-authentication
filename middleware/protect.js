@@ -7,7 +7,7 @@ async function protect(req, res, next){
     if(!token) return res.status(401).json({error: 'Unauthorized. Invalid token. Log in to access the page'});
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const foundUser = await User.findById(decoded.id).select('-email').select('-_id').select('-__v');
+        const foundUser = await User.findById(decoded.id).select('-email').select('-__v');
         if(!foundUser) return res.status(404).json({error: 'Unauthorized. Invalid token. Log in to access the page'});
         req.user = foundUser;
         next();
