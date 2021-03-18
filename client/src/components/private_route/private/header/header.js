@@ -30,7 +30,8 @@ function Header(){
             setTimeout(() => {
                 setMsg('');
                 close();
-            }, 3000)
+                history.push('/login');
+            }, 2000)
             return setMsg(data.msg);
             
         } catch (error) {
