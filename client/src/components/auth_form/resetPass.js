@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useParams, useHistory } from 'react-router-dom';
+import SourceCode from '../../components/source_code/sourceCode';
 
 function ResetPass(){
 
@@ -31,6 +32,8 @@ function ResetPass(){
     }
 
     return (
+        <>
+        <SourceCode />
         <div className='form-div'>
             <h2 className='form-title' id='resetPass-title'>Reset Password</h2>
             <form className='form' id='resetPass-form' onSubmit={submitForm}>
@@ -46,6 +49,7 @@ function ResetPass(){
                 {msg === '' ? <></> : <p className='form-msg'>{msg}</p>}
             </form>
         </div>
+        </>
     )
 }
 

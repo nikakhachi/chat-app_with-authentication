@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import SourceCode from '../../components/source_code/sourceCode';
 
 function ForgotPass(){
 
@@ -26,6 +27,8 @@ function ForgotPass(){
     }
 
     return (
+        <>
+        <SourceCode />
         <div className='form-div'>
             <h2 className='form-title' id='forgotPass-title'>Forgot Password ?</h2>
             <form className='form' id='forgotPass-form' onSubmit={submitForm}>
@@ -38,6 +41,7 @@ function ForgotPass(){
                 {msg === '' ? <></> : <p className='form-msg'>{msg}</p>}
             </form>
         </div>
+        </>
     )
 }
 

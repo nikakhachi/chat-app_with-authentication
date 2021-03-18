@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import { useState } from 'react';
-
 function Header(){
 
     const history = useHistory();
@@ -55,9 +54,13 @@ function Header(){
 
     return (
         <header id='private-header'>
+            <a id='github-link' href='https://github.com/xnick7x/mern-authentication' 
+            rel="noreferrer" target="_blank">
+                <i className="fa fa-github" aria-hidden="true"></i> <span></span>
+            </a>
             <p id='private-header-title' className='private-header-item'><i className="fa fa-commenting" aria-hidden="true"></i> Chat Room</p>
             <p id='account-settings' className='private-header-item'>Account Settings</p>
-            <Popup nested className='settings-modal' trigger={<i className="private-header-item fa fa-cog" aria-hidden="true"></i>} position="left top">
+            <Popup nested className='settings-modal' trigger={<i className="private-header-item fa fa-cog" aria-hidden="true"></i>} >
                 {close => (
                 <ul id='account-settings-modal'>
                     <li className='settings-modal'>Account Settings</li>

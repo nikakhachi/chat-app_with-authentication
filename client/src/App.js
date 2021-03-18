@@ -7,12 +7,10 @@ import Register from './components/auth_form/register';
 import Login from './components/auth_form/login';
 import ForgotPass from './components/auth_form/forgotPass';
 import ResetPass from './components/auth_form/resetPass';
-import SourceCode from './components/source_code/sourceCode';
 
 function App() {
   return (
     <Router>
-        <SourceCode />
         <Switch>
           <PrivateRoute exact path='/' component={PrivateScreen}/>
           <Route exact path='/register' component={Register} />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
-
+import SourceCode from '../../components/source_code/sourceCode';
 function Login(){
 
     const history = useHistory();
@@ -31,6 +31,8 @@ function Login(){
     }
 
     return (
+        <>
+        <SourceCode />
         <div className='form-div'>
             <h2 className='form-title' id='login-title'>Log In</h2>
             <form className='form' id='login-form' onSubmit={submitForm}>
@@ -47,6 +49,7 @@ function Login(){
                 {msg === '' ? <></> : <p className='form-msg'>{msg}</p>}
             </form>
         </div>
+        </>
     )
 }
 
