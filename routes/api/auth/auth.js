@@ -7,7 +7,6 @@ const User = require('../../../models/User');
 
 function addCookie(res, token){
     res.cookie('jwt', token, {
-        expires: new Date(Date.now() + 30*(1000*60)),
         secure: true,
         httpOnly: true
     })
