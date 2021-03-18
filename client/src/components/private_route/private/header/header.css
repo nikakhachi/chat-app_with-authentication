@@ -182,80 +182,42 @@
     margin-right: 5%;
   }
   .settings-modal-content {
-    /* background-color: white;
-    color: black; */
     width: 50%;
     font-size: 2.6vw;
     border-radius: 0.8vw;
-    /* animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards; */
   }
-  /* #account-settings-modal {
-    text-align: left;
-    list-style: none;
-  } */
   .settings-modal {
     padding: 3% 2%;
-    /* cursor: pointer; */
   }
   .settings-modal:first-child {
-    /* background-color: rgba(128, 128, 128, 0.89);
-    color: white;
-    padding: 0% 2%; */
     border-top-right-radius: 0.8vw;
     border-top-left-radius: 0.8vw;
-    /* cursor: inherit; */
   }
-  /* .settings-modal:nth-child(3) {
-    background-color: red;
-    color: white;
-  } */
-
   .username-change-content {
-    /* background-color: white;
-    color: black;
-    text-align: left; */
     width: 60%;
     padding: 3% 0;
-    /* animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards; */
   }
-  /* #username-change-form {
-    width: 80%;
-    margin: auto;
-  } */
   .modal-header {
     font-size: 4vw;
-    /* text-align: center; */
     margin-bottom: 5%;
   }
-  /* .modal-element {
-    display: block;
-  } */
   .modal-label {
     font-size: 3vw;
   }
   .modal-input {
     font-size: 2vw;
-    /* border: 1px solid gray;
-    width: 100%; */
     padding: 2% 3%;
     border-radius: 5vw;
     margin-bottom: 5%;
     margin-top: 2%;
   }
-  /* .modal-input:focus {
-    outline: none;
-  } */
   .modal-btn,
   #username-change-return-btn {
-    /* border: none;
-    background-color: green;
-    color: white; */
     width: 45%;
     font-size: 3vw;
     border-radius: 4vw;
     margin-top: 10%;
     padding: 1.5% 0%;
-    /* cursor: pointer; */
   }
   #username-change-return-btn {
     margin-left: 2%;
@@ -263,23 +225,17 @@
 
   #modal-error {
     font-size: 2.5vw;
-    /* color: red; */
   }
   #modal-msg {
     font-size: 2.5vw;
-    /* color: green; */
   }
 
   .delete-account-content {
-    /* background-color: white;
-    color: black; */
     width: 70%;
     padding: 3%;
-    /* animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards; */
   }
 
   .deletion-header {
-    /* color: red; */
     font-size: 5vw;
   }
   .delete-account-text {
@@ -287,17 +243,10 @@
     margin-bottom: 6%;
   }
   .deletion-btn {
-    /* border: none;
-    background-color: red; */
     font-size: 4vw;
-    /* color: white; */
     margin: 3%;
     padding: 0.4% 8%;
-    /* cursor: pointer; */
   }
-  /* #return-btn {
-    background-color: gray;
-  } */
 }
 
 @media (max-width: 500px) {
@@ -323,45 +272,24 @@
     display: none;
   }
   #private-header-title {
-    font-size: 5vw;
-    margin-right: 3%;
+    display: none;
   }
   .settings-modal-content {
-    /* background-color: white;
-    color: black; */
-    /* width: 50%; */
     font-size: 4vw;
     border-radius: 1vw;
-    /* animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards; */
+    animation: anvil 0.1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
   }
-  /* #account-settings-modal {
-    text-align: left;
-    list-style: none;
-  } */
   .settings-modal {
     padding: 5% 1%;
-    /* cursor: pointer; */
   }
   .settings-modal:first-child {
-    /* background-color: rgba(128, 128, 128, 0.89);
-    color: white;
-    padding: 0% 2%; */
     border-top-right-radius: 1vw;
     border-top-left-radius: 1vw;
-    /* cursor: inherit; */
   }
-  /* .settings-modal:nth-child(3) {
-    background-color: red;
-    color: white;
-  } */
-
   .username-change-content {
-    /* background-color: white;
-    color: black;
-    text-align: left; */
     width: 90%;
     padding: 3% 0;
-    /* animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards; */
+    animation: anvil 0.1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
   }
   #username-change-form {
     width: 80%;
@@ -369,39 +297,23 @@
   }
   .modal-header {
     font-size: 7vw;
-    /* text-align: center; */
     margin-bottom: 7%;
   }
-  /* .modal-element {
-    display: block;
-  } */
   .modal-label {
     font-size: 5vw;
   }
   .modal-input {
     font-size: 3.5vw;
-    /* border: 1px solid gray;
-    width: 100%; */
     padding: 2% 3%;
     padding-right: 0;
-    /* border-radius: 5vw;
-    margin-bottom: 5%;
-    margin-top: 2%; */
   }
-  /* .modal-input:focus {
-    outline: none;
-  } */
   .modal-btn,
   #username-change-return-btn {
-    /* border: none;
-    background-color: green;
-    color: white; */
     width: 48%;
     font-size: 7vw;
     border-radius: 6vw;
     margin-top: 10%;
     padding: 1.5% 0%;
-    /* cursor: pointer; */
   }
   #username-change-return-btn {
     margin-left: 3%;
@@ -409,23 +321,17 @@
 
   #modal-error {
     font-size: 5vw;
-    /* color: red; */
   }
   #modal-msg {
     font-size: 5vw;
-    /* color: green; */
   }
 
   .delete-account-content {
-    /* background-color: white;
-    color: black; */
     width: 85%;
-    /* padding: 3%; */
-    /* animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards; */
+    animation: anvil 0.1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
   }
 
   .deletion-header {
-    /* color: red; */
     font-size: 9vw;
   }
   .delete-account-text {
@@ -433,15 +339,6 @@
     margin-bottom: 4%;
   }
   .deletion-btn {
-    /* border: none;
-    background-color: red; */
     font-size: 7vw;
-    /* color: white; */
-    /* margin: 3%;
-    padding: 0.4% 8%; */
-    /* cursor: pointer; */
   }
-  /* #return-btn {
-    background-color: gray;
-  } */
 }
