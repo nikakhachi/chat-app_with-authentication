@@ -1,5 +1,6 @@
 import './users.css';
 import { useSelector } from 'react-redux';
+import ReactScrollableFeed from 'react-scrollable-feed';
 
 
 function Users(){
@@ -16,15 +17,17 @@ function Users(){
     return (
         <div id='user-section'>
             <ul id='user-list'>
-            <li className='user-list-item'><i className="fa fa-circle fa-circle-online" aria-hidden="true"></i> {user.username} <span id='you'>(you)</span> <em><span id='user-typing'>{userStatus.length === 1 && userStatus[0].typing ? 'Typing...' : null}</span></em></li>
-            {onlineUsers.map((item, index) => (
-                <li className='user-list-item' key={index}><i className="fa fa-circle fa-circle-online" aria-hidden="true"></i> {item.username} <em><span id='user-typing'>{item.typing ? 'Typing...' : null}</span></em></li>
-                )
-            )}
-            {offlineUsers.map((item, index) => (
-                <li className='user-list-item' key={index}><i className="fa fa-circle" aria-hidden="true"></i> {item} </li>
-                )
-            )}
+            <ReactScrollableFeed>
+                <li className='user-list-item'><i className="fa fa-circle fa-circle-online" aria-hidden="true"></i> {user.username} <span id='you'>(you)</span> <em><span id='user-typing'>{userStatus.length === 1 && userStatus[0].typing ? 'Typing...' : null}</span></em></li>
+                {onlineUsers.map((item, index) => (
+                    <li className='user-list-item' key={index}><i className="fa fa-circle fa-circle-online" aria-hidden="true"></i> {item.username} <em><span id='user-typing'>{item.typing ? 'Typing...' : null}</span></em></li>
+                    )
+                )}
+                {offlineUsers.map((item, index) => (
+                    <li className='user-list-item' key={index}><i className="fa fa-circle" aria-hidden="true"></i> {item} </li>
+                    )
+                )}
+            </ReactScrollableFeed>
             </ul>
         </div>
     )
