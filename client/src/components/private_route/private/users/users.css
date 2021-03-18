@@ -43,3 +43,57 @@
   font-size: 1.1vw;
   color: rgba(255, 255, 255, 0.404);
 }
+
+@media (max-width: 1025px) {
+  /* #user-section {
+    width: 30%;
+    background-color: rgba(66, 66, 66, 0.295);
+  } */
+
+  /* #user-list {
+    list-style: none;
+    padding: 2% 5%;
+    text-align: left;
+  } */
+
+  .user-list-item {
+    font-size: 2.5vw;
+    margin-bottom: 0.2%;
+    padding: 4% 0;
+    /* border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    word-break: break-all; */
+  }
+
+  /* .user-list-item:first-child {
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+  } */
+
+  .user-list-item .fa {
+    font-size: 1.6vw;
+    /* margin-right: 1%;
+    color: gray; */
+  }
+  /* 
+  .user-list-item .fa-circle-online {
+    color: green;
+  }
+
+  .user-list-item .fa-circle-online-you {
+    color: green;
+  } */
+
+  .user-list-item #you {
+    font-size: 1.5vw;
+  }
+
+  .user-list-item #user-typing {
+    font-size: 1.5vw;
+    /* color: rgba(255, 255, 255, 0.404); */
+  }
+}
+
+@media (max-width: 500px) {
+  #user-section {
+    display: none;
+  }
+}

@@ -10,8 +10,6 @@ function Users(){
     const onlineUsers = useSelector(state => state.online.online_users).filter(item => item.username !== user.username );
     const userStatus = useSelector(state => state.online.online_users).filter(item => item.username === user.username );
 
-    console.log(userStatus);
-
     const onlineUsernames = onlineUsers.filter(item => item.username !== user.username ).map(item => item.username);
     const offlineUsers = users.map(item => item.username).filter(item => !onlineUsernames.includes(item)).filter(item => item !== user.username );
 
