@@ -67,6 +67,34 @@
 
 @media (max-width: 500px) {
   #user-section {
-    display: none;
+    width: 100%;
+  }
+
+  #user-list {
+    height: 6vh;
+  }
+
+  .user-list-item {
+    font-size: 4vw;
+    padding: 0;
+    display: inline;
+  }
+
+  .user-list-item:first-child {
+    border-top: none;
+  }
+
+  .user-list-item .fa {
+    font-size: 2vw;
+  }
+
+  .user-list-item #you {
+    font-size: 2.5vw;
+  }
+
+  .user-list-item #user-typing {
+    font-size: 3vw;
+    color: rgba(255, 255, 255, 0.404);
+    margin-right: 2%;
   }
 }

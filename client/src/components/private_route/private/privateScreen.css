@@ -4,3 +4,9 @@
 #private-main {
   display: flex;
 }
+
+@media (max-width: 500px) {
+  #private-main {
+    flex-direction: column;
+  }
+}
