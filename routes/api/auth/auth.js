@@ -8,7 +8,8 @@ const User = require('../../../models/User');
 function addCookie(res, token){
     res.cookie('jwt', token, {
         secure: true,
-        httpOnly: true
+        httpOnly: true,
+        sameSite: 'none'
     })
 }
 
